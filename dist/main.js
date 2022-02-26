@@ -1,0 +1,1 @@
+document.querySelector("body").style.backgroundColor="blue",console.log("hey");
