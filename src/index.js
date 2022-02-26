@@ -1,5 +1,8 @@
-import appendHeader from "./header";
+import header from "./header";
+import sidebar from "./sidebar";
 import './styles/index.css'
 let page = document.querySelector('.content');
-
-appendHeader(page);
+let main = document.createElement('main');
+page.appendChild(header());
+page.appendChild(main)
+main.appendChild(sidebar());

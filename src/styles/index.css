@@ -6,9 +6,15 @@ html {
 }
 html, body {
     margin: 0;
+    height: 100%;
     min-width: auto;
+}
+main {
+    height: 100%;
+    display: flex;
 }
 .content {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
