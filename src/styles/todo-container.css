@@ -1,0 +1,9 @@
+.todo-container {
+    background-color: whitesmoke;
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    gap: 15px
+}
