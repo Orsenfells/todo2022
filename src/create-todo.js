@@ -1,6 +1,6 @@
 import './styles/todo.css';
 
-let todo = (data) => {
+let createTodo = (data) => {
     let todo = document.createElement('div');
     let title = document.createElement('h1');
     let description = document.createElement('p');
@@ -19,4 +19,4 @@ let todo = (data) => {
     return todo
 }
 
-export default todo
+export default createTodo

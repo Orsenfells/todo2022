@@ -3,3 +3,7 @@
     width: 20%;
     height: 100%;
 }
+.sidebar ul li{
+    margin: 10px 0;
+    list-style: none;
+}

@@ -1,21 +1,22 @@
-import header from "./header";
-import sidebar from "./sidebar";
-import './styles/index.css'
-import todoContainer from "./todo-container";
-import todo from './todo'
-let page = document.querySelector('.content');
-let main = document.createElement('main');
-let defaultContainer = todoContainer()
-let testData = {
-    title: 'Test',
-    description: 'Test Todo',
-    priority: 'high',
+import domController from "./dom-controller";
+import projectController from "./project-controller"
+let dom = domController()
+let project = projectController()
+dom.initialLoad()
+dom.render(project.getData())
+// console.log(data)
+// console.log(dom)
 
-}
-page.appendChild(header());
-page.appendChild(main)
-main.appendChild(sidebar());
-main.appendChild(defaultContainer.getContainer())
-defaultContainer.appendToContainer(todo(testData))
-defaultContainer.appendToContainer(todo(testData))
-defaultContainer.appendToContainer(todo(testData))
+
+
+// import './styles/index.css'
+// import todoContainer from "./todo-container";
+// import createTodo from './create-todo'
+// let page = document.querySelector('.content');
+// let main = document.createElement('main');
+// let defaultContainer = todoContainer()
+
+// page.appendChild(header());
+// page.appendChild(main)
+// main.appendChild(sidebar());
+
