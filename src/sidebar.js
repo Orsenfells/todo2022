@@ -7,23 +7,24 @@ let sidebar = function() {
     sidebar.className = 'sidebar'
 
     let createProject = (project) => {
-        let div = document.createElement('li');
-        div.textContent = project;
-        projectList.appendChild(div) 
-        
+        let li = document.createElement('li');
+        li.textContent = project;
+        li.id = project
+        projectList.appendChild(li) 
     }
     
-    let updateSidebar = (project) => {
-            
+    let addProject = (project) => {       
             createProject(project)
- 
-        // createProject('projects[0]')
     }
-
+    let removeAllChildren = () => {
+        while(projectList.firstChild) {
+            projectList.removeChild(projectList.lastChild)
+        }
+    }
 
     const getSidebar = () => sidebar
 
-    return {getSidebar, updateSidebar}
+    return {getSidebar, addProject, removeAllChildren}
 }
 
 export default sidebar

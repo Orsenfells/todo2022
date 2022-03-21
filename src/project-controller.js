@@ -7,29 +7,50 @@ let projectData = (() => {
         active: true,
         todos: [{
             title: 'testTodo',
+            id: 'test',
             description: 'descreription',
             priority: 'sda',
         }]
-    }];
+    },
+    {
+        project: 'test-2',
+        active: false,
+        todos: [{
+            title: 'Super test',
+            id: 'super-test',
+            description: 'descreription',
+            priority: 'low',
+        }]
+    },];
 
     let getProjects = () => projects;
 
+    let setActive = (id) => {
+        projects.forEach(data => {
+            if(data.project === id) {
+                data.active = true;
+            }
+        })
+    }
+    let setAllProjectsInactive = () => {
+        projects.forEach(data => {
+            data.active = false
+        })
+    }
     let addProject = (project) => projects.push(project)
 
-    return {getProjects, addProject}
+    return {getProjects, addProject, setActive, setAllProjectsInactive}
 })()
 
 let projectController = () => {
     
-    
-    let data = {projects: projectData.getProjects()}
-    // console.log(projectData.getProjects())
-    // projectData.addProject({})
-    // console.log(projectData.getProjects())
 
+    let setProjectActive = (id) => {
+            projectData.setAllProjectsInactive()
+            return projectData.setActive(id)
+        }
     let getData = () => projectData.getProjects()
-    console.log(projectData.getProjects())
-    return {getData}
+    return {getData, setProjectActive}
 }
 
 [

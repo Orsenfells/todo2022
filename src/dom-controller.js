@@ -5,7 +5,6 @@ import header from "./header";
 import loadSidebar from "./sidebar";
 let domController = () => {
     let todoContainer = createTodoContainer()
-    let projects 
     let sidebar = loadSidebar()
     let initialLoad = () => {
         let page = document.querySelector('.content');
@@ -18,15 +17,21 @@ let domController = () => {
         main.appendChild(todoContainer.getContainer())
     }
     let handleProjectData = (data) => {
-        console.log(data)
-        sidebar.updateSidebar(data.project)
+        sidebar.addProject(data.project)
         if(data.active) {
             data.todos.forEach(todo => {
                 todoContainer.appendToContainer(createTodo(todo))
             })
         }
     }
+    function removeAllChildren(node) {
+        while(node.firstChild) {
+            node.removeChild(node.lastChild)
+        }
+    }
     let render = (data) => {
+        sidebar.removeAllChildren()
+        todoContainer.removeAllChildren()
         data.forEach(project => handleProjectData(project))
         // sidebar.updateSidebar(data.projects)
     }

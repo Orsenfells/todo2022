@@ -1,9 +1,17 @@
 import domController from "./dom-controller";
 import projectController from "./project-controller"
+import events from "./events.js"
 let dom = domController()
 let project = projectController()
+let loadEvents = events(project, dom)
 dom.initialLoad()
+
 dom.render(project.getData())
+
+
+let event = events()
+console.log(project)
+loadEvents.loadSidebarEvents(project, dom)
 // console.log(data)
 // console.log(dom)
 

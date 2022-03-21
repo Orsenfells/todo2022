@@ -8,7 +8,12 @@ let todoContainer = () => {
     let appendToContainer = (element) => {
         todoContainer.appendChild(element)
     }
-    return {getContainer, appendToContainer}
+    let removeAllChildren = () => {
+        while(todoContainer.firstChild) {
+            todoContainer.removeChild(todoContainer.lastChild)
+        }
+    }
+    return {getContainer, appendToContainer, removeAllChildren}
 }
 
 export default todoContainer
