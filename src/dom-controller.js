@@ -3,6 +3,7 @@ import createTodoContainer from "./todo-container";
 import createTodo from './create-todo'
 import header from "./header";
 import loadSidebar from "./sidebar";
+import modal from './create-project-modal';
 let domController = () => {
     let todoContainer = createTodoContainer()
     let sidebar = loadSidebar()
@@ -15,6 +16,7 @@ let domController = () => {
         page.appendChild(main)
         main.appendChild(sidebar.getSidebar());
         main.appendChild(todoContainer.getContainer())
+        page.appendChild(modal())
     }
     let handleProjectData = (data) => {
         sidebar.addProject(data.project, data.active)

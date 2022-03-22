@@ -1,23 +1,22 @@
 
 
 let events = (projects, dom) => {
-    let toggleActiveProject = () => {
 
-    }
-    let loadSidebarEvents = () => {
+    let loadSidebarEvents = (projects, dom) => {
         let sidebar = document.querySelector('.sidebar')
         sidebar.addEventListener('click', (e) => {
             if(e.target.tagName === 'LI'){
-                e.target.classList.add('active')
-                console.log(e.target.classList)
                 projects.setProjectActive(e.target.id)
                 dom.render(projects.getData())
             }
             
         })
     }
-  
-    return {loadSidebarEvents}
+    let loadEvents = () => {
+         loadSidebarEvents(projects, dom)
+
+    }
+    return {loadEvents}
 }
 
 export default events

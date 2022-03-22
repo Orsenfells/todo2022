@@ -49,19 +49,10 @@ let projectController = () => {
             projectData.setAllProjectsInactive()
             return projectData.setActive(id)
         }
+    let addProject = (project) => projectData.addProject(project)
     let getData = () => projectData.getProjects()
-    return {getData, setProjectActive}
+    return {getData, setProjectActive, addProject}
 }
 
-[
-    {
-        project: 'test',
-        active: false,
-        todos: [{
-            title: 'testTodo',
-            description: 'descreription',
-            priority: 'sda',
-        }]
-    }
-]
+
 export default projectController
