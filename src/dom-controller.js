@@ -17,7 +17,7 @@ let domController = () => {
         main.appendChild(todoContainer.getContainer())
     }
     let handleProjectData = (data) => {
-        sidebar.addProject(data.project)
+        sidebar.addProject(data.project, data.active)
         if(data.active) {
             data.todos.forEach(todo => {
                 todoContainer.appendToContainer(createTodo(todo))
