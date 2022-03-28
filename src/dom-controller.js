@@ -3,10 +3,11 @@ import createTodoContainer from "./todo-container";
 import createTodo from './create-todo'
 import header from "./header";
 import loadSidebar from "./sidebar";
-import modal from './create-project-modal';
+import createProjectModal from './create-project-modal';
 let domController = () => {
     let todoContainer = createTodoContainer()
     let sidebar = loadSidebar()
+    let projectModal = createProjectModal()
     let initialLoad = () => {
         let page = document.querySelector('.content');
         let main = document.createElement('main');
@@ -16,7 +17,7 @@ let domController = () => {
         page.appendChild(main)
         main.appendChild(sidebar.getSidebar());
         main.appendChild(todoContainer.getContainer())
-        page.appendChild(modal())
+        page.appendChild(projectModal.getModal())
     }
     let handleProjectData = (data) => {
         sidebar.addProject(data.project, data.active)
@@ -37,9 +38,10 @@ let domController = () => {
         data.forEach(project => handleProjectData(project))
         // sidebar.updateSidebar(data.projects)
     }
-    
-
-    return {initialLoad, render}
+    let toggleProjectModal = () => {
+        projectModal.toggleModalVisibility();
+    }
+    return {initialLoad, render, toggleProjectModal}
 }
 
 export default domController

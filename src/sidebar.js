@@ -10,7 +10,7 @@ let sidebar = function() {
     let projectList = document.createElement('ul')
     sidebar.appendChild(projectList)
     sidebar.className = 'sidebar'
-    console.log(projectButton())
+
     sidebar.appendChild(projectButton())
     let createProject = (project, active) => {
         let li = document.createElement('li');
