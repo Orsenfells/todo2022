@@ -4,6 +4,7 @@
 let projectData = (() => {
     let projects = [{
         project: 'test',
+        id: 'dsd',
         active: true,
         todos: [{
             title: 'testTodo',
@@ -14,6 +15,7 @@ let projectData = (() => {
     },
     {
         project: 'test-2',
+        id: 'tests',
         active: false,
         todos: [{
             title: 'Super test',
@@ -27,7 +29,7 @@ let projectData = (() => {
 
     let setActive = (id) => {
         projects.forEach(data => {
-            if(data.project === id) {
+            if(data.id === id) {
                 data.active = true;
             }
         })
@@ -50,7 +52,10 @@ let projectController = () => {
             return projectData.setActive(id)
         }
     let addProject = (project) => projectData.addProject(project)
-    let getData = () => projectData.getProjects()
+    let getData = () => {
+        console.log(this)
+        return projectData.getProjects()
+    }
     return {getData, setProjectActive, addProject}
 }
 

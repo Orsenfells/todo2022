@@ -20,18 +20,14 @@ let domController = () => {
         page.appendChild(projectModal.getModal())
     }
     let handleProjectData = (data) => {
-        sidebar.addProject(data.project, data.active)
+        sidebar.addProject(data.project, data.active, data.id)
         if(data.active) {
             data.todos.forEach(todo => {
                 todoContainer.appendToContainer(createTodo(todo))
             })
         }
     }
-    function removeAllChildren(node) {
-        while(node.firstChild) {
-            node.removeChild(node.lastChild)
-        }
-    }
+
     let render = (data) => {
         sidebar.removeAllChildren()
         todoContainer.removeAllChildren()

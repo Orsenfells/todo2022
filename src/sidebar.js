@@ -12,18 +12,18 @@ let sidebar = function() {
     sidebar.className = 'sidebar'
 
     sidebar.appendChild(projectButton())
-    let createProject = (project, active) => {
+    let createProject = (project, active, id) => {
         let li = document.createElement('li');
         if(active){
             li.classList.add('active')
         }
         li.textContent = project;
-        li.id = project
+        li.id = id;
         projectList.appendChild(li) 
     }
     
-    let addProject = (project, active) => {       
-            createProject(project, active)
+    let addProject = (project, active, id) => {       
+            createProject(project, active, id)
     }
     let removeAllChildren = () => {
         while(projectList.firstChild) {

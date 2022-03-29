@@ -1,11 +1,12 @@
 
 
-let events = (projects, dom) => {
+let events = () => {
 
     let sidebarEvents = (projects, dom) => {
         let sidebar = document.querySelector('.sidebar')
         sidebar.addEventListener('click', (e) => {
             if(e.target.tagName === 'LI'){
+                console.log(e.target.id)
                 projects.setProjectActive(e.target.id)
                 dom.render(projects.getData())
             }
@@ -25,10 +26,27 @@ let events = (projects, dom) => {
                     
                     dom.toggleProjectModal()
                 }
+                else if(element.id === 'add-project-button'){
+                    
+                    projects.addProject({
+                        project: 'test-3',
+                        id: `${Math.random()}`,
+                        active: false,
+                        todos: [{
+                            title: ``,
+                            id: 'super-test',
+                            description: 'descreription',
+                            priority: 'low',
+                        }]
+                    })
+                    console.log(projects)
+                    dom.toggleProjectModal()
+                    dom.render(projects.getData())
+                }
             } 
         })
     }
-    let loadEvents = () => {
+    let loadEvents = (projects, dom) => {
         sidebarEvents(projects, dom)
         projectModalEvents(projects, dom)
     }
