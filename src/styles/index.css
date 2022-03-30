@@ -19,3 +19,14 @@ main {
     flex-direction: column;
     height: 100%;
 }
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: whitesmoke;
+
+}
+.add-task-button {
+    align-self: flex-start;
+    margin-left: 50px
+}

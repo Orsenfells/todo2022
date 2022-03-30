@@ -18,6 +18,24 @@ let events = () => {
     
     let projectModalEvents = (projects, dom) => {
         let modal = document.getElementById('create-project-modal')
+
+        let formatProjectData = (data) => {
+            let formatted = {
+                project: data.project,
+                id: `${Math.random().toString(16).slice(2)}`,
+                active: false,
+                todos: [] 
+            }
+            if(data.title){
+                formatted.todos.push({
+                    title: data.title,
+                    id: `${Math.random().toString(16).slice(2)}`,
+                    description: data.description,
+                    priority: data.priority,
+                })
+            }
+            return formatted
+        }
         modal.addEventListener('click', (e) => {
             let element = e.target;
             if(element.tagName === 'BUTTON'){
@@ -26,19 +44,12 @@ let events = () => {
                     dom.toggleProjectModal()
                 }
                 else if(element.id === 'add-project-button'){
-                    
-                    // projects.addProject({
-                    //     project: 'test-3',
-                    //     id: `${Math.random().toString(16).slice(2)}`,
-                    //     active: false,
-                    //     todos: [{
-                    //         title: ``,
-                    //         id: 'super-test',
-                    //         description: 'descreription',
-                    //         priority: 'low',
-                    //     }]
-                    // })
-                    dom.getModalData()
+                    let data = formatProjectData(dom.getModalData())
+                    if(!data.project) {
+                        return
+                    }
+                    projects.addProject(data)
+
                     dom.toggleProjectModal()
                     dom.render(projects.getData())
                 }

@@ -33,6 +33,8 @@ let createRadioOption = (id) => {
 let addTodoFieldSet = () => {
     let fieldset = document.createElement('fieldset')
     let addTodoHeading = document.createElement('h3');
+    let todoLabel = document.createElement('label'); 
+    let todoInput = document.createElement('input');
     let radio = document.createElement('div');
     let radioHeading = document.createElement('h3');
     let highPriority = createRadioOption('High')
@@ -40,6 +42,7 @@ let addTodoFieldSet = () => {
     let descriptionLabel = document.createElement('label')
     let descriptionInput = document.createElement('textarea');
 
+    fieldset.name = 'todo'
     addTodoHeading.textContent = 'Add Todo'
     radioHeading.textContent = 'Priority'
     radio.appendChild(radioHeading)
@@ -50,7 +53,11 @@ let addTodoFieldSet = () => {
     descriptionInput.name = 'description'
     descriptionLabel.textContent = 'Description';
     descriptionLabel.htmlFor = 'descriptionInput';
-    let fieldsetChildren = [addTodoHeading, descriptionLabel, descriptionInput, radio]
+    todoInput.id = 'todoInput';
+    todoInput.name = 'title';
+    todoLabel.htmlFor = 'todoInput'
+    todoLabel.textContent = 'Todo'
+    let fieldsetChildren = [addTodoHeading, todoLabel, todoInput, descriptionLabel, descriptionInput, radio]
     fieldsetChildren.forEach(child => fieldset.appendChild(child))
     return fieldset
 }
@@ -58,20 +65,11 @@ let modalContent = () => {
     let form = document.createElement('form');
     let todoFieldset = addTodoFieldSet()
     let heading = document.createElement('h3');
-    // let addTodoHeading = document.createElement('h3');
     let nameLabel = document.createElement('label');
     let nameInput = document.createElement('input');
-    // let descriptionLabel = document.createElement('label')
-    // let descriptionInput = document.createElement('textarea');
     let buttonContainer = document.createElement('div');
-    // let radio = document.createElement('div');
-    // let radioHeading = document.createElement('h3');
-    // let highPriority = createRadioOption('High')
-    // let lowPriority = createRadioOption('Low')
     let cancelButton = document.createElement('button');
     let addProjectButton = document.createElement('button');
-
-    // addTodoHeading.textContent = 'Add Todo'
     form.className = 'modal-content';
     heading.className = 'heading';
     buttonContainer.className = 'button-container';
@@ -79,20 +77,11 @@ let modalContent = () => {
     addProjectButton.id = 'add-project-button';
     buttonContainer.appendChild(cancelButton);
     buttonContainer.appendChild(addProjectButton);
-    // radioHeading.textContent = 'Priority'
-    // radio.appendChild(radioHeading)
-    // radio.appendChild(highPriority);
-    // radio.appendChild(lowPriority);
-    // radio.name = 'priority'
     heading.textContent = 'Add Project';
     nameInput.id = 'nameInput'
     nameLabel.textContent = 'Project Name';
     nameLabel.htmlFor = 'nameInput';
-    nameInput.name = 'project-name';
-    // descriptionInput.id = 'descriptionInput';
-    // descriptionInput.name = 'description'
-    // descriptionLabel.textContent = 'Description';
-    // descriptionLabel.htmlFor = 'descriptionInput';
+    nameInput.name = 'project';
     cancelButton.textContent = 'Cancel';
     addProjectButton.textContent = 'Add Project';
 

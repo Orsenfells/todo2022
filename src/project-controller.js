@@ -3,14 +3,14 @@
 
 let projectData = (() => {
     let projects = [{
-        project: 'test',
+        project: 'Add Todo',
         id: 'dsd',
         active: true,
         todos: [{
-            title: 'testTodo',
+            title: 'add todo button',
             id: 'test',
-            description: 'descreription',
-            priority: 'sda',
+            description: 'Description',
+            priority: 'High',
         }]
     },
     {
