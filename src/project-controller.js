@@ -53,7 +53,7 @@ let projectController = () => {
         }
     let addProject = (project) => projectData.addProject(project)
     let getData = () => {
-        console.log(this)
+
         return projectData.getProjects()
     }
     return {getData, setProjectActive, addProject}

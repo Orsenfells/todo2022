@@ -21,25 +21,24 @@ let events = () => {
         modal.addEventListener('click', (e) => {
             let element = e.target;
             if(element.tagName === 'BUTTON'){
-                e.preventDefault()
+                e.preventDefault() 
                 if(element.id === 'cancel-project-button'){
-                    
                     dom.toggleProjectModal()
                 }
                 else if(element.id === 'add-project-button'){
                     
-                    projects.addProject({
-                        project: 'test-3',
-                        id: `${Math.random()}`,
-                        active: false,
-                        todos: [{
-                            title: ``,
-                            id: 'super-test',
-                            description: 'descreription',
-                            priority: 'low',
-                        }]
-                    })
-                    console.log(projects)
+                    // projects.addProject({
+                    //     project: 'test-3',
+                    //     id: `${Math.random().toString(16).slice(2)}`,
+                    //     active: false,
+                    //     todos: [{
+                    //         title: ``,
+                    //         id: 'super-test',
+                    //         description: 'descreription',
+                    //         priority: 'low',
+                    //     }]
+                    // })
+                    dom.getModalData()
                     dom.toggleProjectModal()
                     dom.render(projects.getData())
                 }

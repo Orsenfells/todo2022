@@ -32,12 +32,14 @@ let domController = () => {
         sidebar.removeAllChildren()
         todoContainer.removeAllChildren()
         data.forEach(project => handleProjectData(project))
-        // sidebar.updateSidebar(data.projects)
     }
     let toggleProjectModal = () => {
         projectModal.toggleModalVisibility();
     }
-    return {initialLoad, render, toggleProjectModal}
+    let getModalData = () => {
+        console.log(projectModal.getFormData())
+    }
+    return {initialLoad, render, toggleProjectModal, getModalData}
 }
 
 export default domController

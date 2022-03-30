@@ -1,6 +1,6 @@
 
 .modal {
-    display: none;
+    display: flex;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -29,4 +29,12 @@
     margin-top: 20px;
     display: flex;
     gap: 15px
+}
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
 }
