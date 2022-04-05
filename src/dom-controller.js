@@ -49,11 +49,18 @@ let domController = () => {
     let toggleProjectModal = () => {
         projectModal.toggleModalVisibility();
     }
-    let getModalData = () => {
+    let toggleTaskModal = () => {
+        taskModal.toggleModalVisibility()
+    }
+    let getProjectModalData = () => {
         console.log(projectModal.getFormData())
         return projectModal.getFormData()
     }
-    return {initialLoad, render, toggleProjectModal, getModalData}
+    let getTaskModalData = () => {
+        console.log(taskModal.getFormData())
+        return taskModal.getFormData()
+    }
+    return {initialLoad, render, toggleProjectModal, toggleTaskModal, getProjectModalData, getTaskModalData}
 }
 
 export default domController

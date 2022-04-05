@@ -44,7 +44,7 @@ let events = () => {
                     dom.toggleProjectModal()
                 }
                 else if(element.id === 'add-project-button'){
-                    let data = formatProjectData(dom.getModalData())
+                    let data = formatProjectData(dom.getProjectModalData())
                     if(!data.project) {
                         return
                     }
@@ -56,22 +56,52 @@ let events = () => {
             } 
         })
     }
-    let toggleTaskModal = (projects, dom) => {
-         let projectData = projects.getData()
+    let taskModalEvents = (projects, dom ) => {
+        let modal = document.getElementById('add-task-modal');
+
+        modal.addEventListener('click', (e) => {
+            let element = e.target
+            if(element.tagName === 'BUTTON') {
+                e.preventDefault()
+                if(element.id === 'cancel-task-modal-button'){
+                    dom.toggleTaskModal()
+                }
+                else if(element.id === 'add-task-button') {
+                    let index = projects.getData().findIndex(project => project.active)
+                    let data = dom.getTaskModalData()
+                    data.id = `${Math.random().toString(16).slice(2)}`
+                    projects.addTodo(index, data)
+                    console.log(projects.getData())
+                    dom.render(projects.getData())
+                }
+            }
+        })
+    }
+    let taskButtonEvent = (dom) => {
+        
+        let button = document.getElementById('add-task-button');
+
+        button.addEventListener( 'click', (e) =>{
+            dom.toggleTaskModal()
+        } )
+        //  let projectData = projects.getData()
          
-         let addTask = document.getElementById('add-task-button');
-         addTask.addEventListener('click', () => {
-            let index = projectData.findIndex(project => project.active)
-            console.log(index)
-            projects.addTodo(index)
-            dom.render(projects.getData())
-         })
+        //  let addTask = document.getElementById('add-task-button');
+        //  addTask.addEventListener('click', () => {
+        //     let index = projectData.findIndex(project => project.active)
+        //     console.log(index)
+        //     projects.addTodo(index)
+        //     dom.render(projects.getData())
+        //  })
          
     }
+    
+     
     let loadEvents = (projects, dom) => {
         sidebarEvents(projects, dom)
         projectModalEvents(projects, dom)
-        toggleTaskModal(projects, dom)
+        taskButtonEvent(dom)
+        taskModalEvents(projects, dom)
     }
     return {loadEvents}
 }

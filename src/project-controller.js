@@ -49,12 +49,7 @@ let projectData = (() => {
 
 let projectController = () => {
     
-    let addTodo = (index, todo) => projectData.addTodo(index, {
-        title: 'Add task test',
-        id: 'super-test',
-        description: 'Testing add task button',
-        priority: 'low',
-    })
+    let addTodo = (index, todo) => projectData.addTodo(index, todo)
 
     let setProjectActive = (id) => {
             projectData.setAllProjectsInactive()
