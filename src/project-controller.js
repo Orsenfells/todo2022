@@ -41,11 +41,20 @@ let projectData = (() => {
     }
     let addProject = (project) => projects.push(project)
 
-    return {getProjects, addProject, setActive, setAllProjectsInactive}
+    let addTodo = (index, todo) => {
+        projects[index].todos.push(todo)
+    }
+    return {getProjects, addProject, setActive, setAllProjectsInactive, addTodo}
 })()
 
 let projectController = () => {
     
+    let addTodo = (index, todo) => projectData.addTodo(index, {
+        title: 'Add task test',
+        id: 'super-test',
+        description: 'Testing add task button',
+        priority: 'low',
+    })
 
     let setProjectActive = (id) => {
             projectData.setAllProjectsInactive()
@@ -53,10 +62,9 @@ let projectController = () => {
         }
     let addProject = (project) => projectData.addProject(project)
     let getData = () => {
-
         return projectData.getProjects()
     }
-    return {getData, setProjectActive, addProject}
+    return {getData, setProjectActive, addProject, addTodo}
 }
 
 

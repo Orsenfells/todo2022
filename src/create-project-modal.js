@@ -1,19 +1,6 @@
 import './styles/create-project-modal.css'
-
-let createModal = () => {
-    let modal = document.createElement('div');
-    modal.className = 'modal';
-    modal.id = 'create-project-modal';
-
-    let toggleModalVisibility = () => {
-        if(modal.style.display === 'none' || !modal.style.display){
-            modal.style.display = 'flex';
-        } else modal.style.display = 'none'
-    }
-    let getModal = () => modal;
-    let appendToModal = (child) => modal.appendChild(child)
-    return {getModal, toggleModalVisibility, appendToModal}
-}
+import createModal from './createModal'
+import createTodoFieldSet from './todoFieldSet'
 let createRadioOption = (id) => {
     let div = document.createElement('div');
     div.id = `radio-option-${id}`;
@@ -31,6 +18,8 @@ let createRadioOption = (id) => {
 }
 
 let addTodoFieldSet = () => {
+    let descriptionId = `${Math.random().toString(16).slice(2)}`
+    let todoId = `${Math.random().toString(16).slice(2)}`
     let fieldset = document.createElement('fieldset')
     let addTodoHeading = document.createElement('h3');
     let todoLabel = document.createElement('label'); 
@@ -49,13 +38,13 @@ let addTodoFieldSet = () => {
     radio.appendChild(highPriority);
     radio.appendChild(lowPriority);
     radio.name = 'priority'
-    descriptionInput.id = 'descriptionInput';
+    descriptionInput.id = descriptionId;
     descriptionInput.name = 'description'
     descriptionLabel.textContent = 'Description';
-    descriptionLabel.htmlFor = 'descriptionInput';
-    todoInput.id = 'todoInput';
+    descriptionLabel.htmlFor = descriptionId;
+    todoInput.id = todoId;
     todoInput.name = 'title';
-    todoLabel.htmlFor = 'todoInput'
+    todoLabel.htmlFor = todoId
     todoLabel.textContent = 'Todo'
     let fieldsetChildren = [addTodoHeading, todoLabel, todoInput, descriptionLabel, descriptionInput, radio]
     fieldsetChildren.forEach(child => fieldset.appendChild(child))
@@ -63,7 +52,7 @@ let addTodoFieldSet = () => {
 }
 let modalContent = () => {
     let form = document.createElement('form');
-    let todoFieldset = addTodoFieldSet()
+    let todoFieldset = createTodoFieldSet()
     let heading = document.createElement('h3');
     let nameLabel = document.createElement('label');
     let nameInput = document.createElement('input');
@@ -92,7 +81,7 @@ let modalContent = () => {
 
 let createProjectModal = () => {
     let form = modalContent();
-    let modal = createModal()
+    let modal = createModal('create-project-modal')
     modal.appendToModal(form)
 
     let getModal = () => modal.getModal()

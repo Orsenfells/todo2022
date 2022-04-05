@@ -4,10 +4,12 @@ import createTodo from './create-todo'
 import header from "./header";
 import loadSidebar from "./sidebar";
 import createProjectModal from './create-project-modal';
+import createTaskModal from './create-task-modal';
 let addTodoButton = () => {
     let button = document.createElement('button')
     button.textContent = 'Add Task'
     button.className = 'add-task-button'
+    button.id = 'add-task-button'
     return button
 }
 let addTask = addTodoButton()
@@ -15,6 +17,7 @@ let domController = () => {
     let todoContainer = createTodoContainer()
     let sidebar = loadSidebar()
     let projectModal = createProjectModal()
+    let taskModal = createTaskModal()
     let mainContainer = document.createElement('div');
     mainContainer.className = 'main-container'
     let initialLoad = () => {
@@ -27,6 +30,7 @@ let domController = () => {
         main.appendChild(sidebar.getSidebar());
         main.appendChild(mainContainer)
         page.appendChild(projectModal.getModal())
+        page.appendChild(taskModal.getModal())
     }
     let handleProjectData = (data) => {
         sidebar.addProject(data.project, data.active, data.id)

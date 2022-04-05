@@ -56,9 +56,22 @@ let events = () => {
             } 
         })
     }
+    let toggleTaskModal = (projects, dom) => {
+         let projectData = projects.getData()
+         
+         let addTask = document.getElementById('add-task-button');
+         addTask.addEventListener('click', () => {
+            let index = projectData.findIndex(project => project.active)
+            console.log(index)
+            projects.addTodo(index)
+            dom.render(projects.getData())
+         })
+         
+    }
     let loadEvents = (projects, dom) => {
         sidebarEvents(projects, dom)
         projectModalEvents(projects, dom)
+        toggleTaskModal(projects, dom)
     }
     return {loadEvents}
 }
