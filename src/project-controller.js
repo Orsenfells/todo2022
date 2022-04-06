@@ -2,28 +2,60 @@
 
 
 let projectData = (() => {
-    let projects = [{
-        project: 'Add Todo',
+    let projects = [
+        {
+        project: 'Finish Todo Project',
         id: 'dsd',
         active: true,
         todos: [{
-            title: 'add todo button',
+            title: 'add duedate',
             id: 'test',
-            description: 'Description',
+            duedate: '08/01',
+            description: 'refactor the data and dom to include duedate',
             priority: 'High',
-        }]
+        },
+        {
+            title: 'expand task',
+            id: 'test',
+            duedate: '08/01',
+            description: 'expand a task to see/edit its details',
+            priority: 'High',
+        },
+        {
+            title: 'delete task',
+            id: 'test',
+            duedate: '08/01',
+            description: 'Delete tasks/mark as complete',
+            priority: 'High',
+        },
+        {
+            title: 'persistence',
+            id: 'test',
+            duedate: '08/01',
+            description: 'Use Web Storage API for persistence',
+            priority: 'High',
+        },
+        {
+            title: 'update visuals',
+            id: 'test',
+            duedate: '08/01',
+            description: 'Make the site look nice',
+            priority: 'High',
+        },
+        ]
     },
     {
-        project: 'test-2',
+        project: 'Learn to cook',
         id: 'tests',
         active: false,
         todos: [{
-            title: 'Super test',
+            title: 'Cook pasta',
             id: 'super-test',
-            description: 'descreription',
+            description: 'Make a nice chicken alfredo',
             priority: 'low',
         }]
-    },];
+    },
+];
 
     let getProjects = () => projects;
 

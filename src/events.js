@@ -69,9 +69,12 @@ let events = () => {
                 else if(element.id === 'add-task-button') {
                     let index = projects.getData().findIndex(project => project.active)
                     let data = dom.getTaskModalData()
+                    if(!data.title) {
+                        return
+                    }
                     data.id = `${Math.random().toString(16).slice(2)}`
                     projects.addTodo(index, data)
-                    console.log(projects.getData())
+                    dom.toggleTaskModal()
                     dom.render(projects.getData())
                 }
             }

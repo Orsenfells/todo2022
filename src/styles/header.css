@@ -1,5 +1,5 @@
 .header {
     background-color: rgb(79, 221, 221);
-    height: 100px;
+    min-height: 100px;
     border-bottom: 2px solid rgb(98, 161, 161);
 }
